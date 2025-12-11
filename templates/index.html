@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h3>Python Code</h3>
+    <form method="POST">
+      <div class="mb-3">
+        <textarea class="form-control" name="python" rows="12"
+          placeholder="def hello():&#10;    print('Hi')">{{ py_code or '' }}</textarea>
+      </div>
+      <button class="btn btn-primary">Convert to Java →</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h3>Java Code (Preview)</h3>
+    <pre class="bg-light p-3 border rounded" style="min-height:260px;">{{ java_code or '' }}</pre>
+  </div>
+</div>
+{% endblock %}
