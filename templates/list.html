@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Saved Conversions</h3>
-<p>Database integration coming soon. This page will show all saved Python → Java conversions.</p>
+<h3>Saved Conversions ({{ conversions|length }})</h3>
+
+<div class="row">
+  {% for conv in conversions %}
+  <div class="col-md-6 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <h6>ID: {{ conv.id }}</h6>
+        <p class="text-muted mb-1">Created: {{ conv.created_at }}</p>
+        <h6 class="text-muted">Python</h6>
+        <pre class="python">{{ conv.python_code }}</pre>
+        <h6 class="text-muted mt-2">Java</h6>
+        <pre class="java">{{ conv.java_code }}</pre>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Convert More</a>
 {% endblock %}
